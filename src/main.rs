@@ -60,7 +60,7 @@ fn main() -> Result<()> {
         .ok_or("response has not content-length header")?;
     let content_length =
         u64::from_str(content_length.to_str()?).map_err(|_| "content-length is not a valid u64")?;
-    let mut output_file = File::create("test.bin").unwrap();
+    let mut output_file = File::create("test.png").unwrap();
     println!("starting download...");
     for range in PartialRangeIterator::new(0, content_length - 1, CHUNK_SIZE) {
         println!("downloading range: {:?}", range);
